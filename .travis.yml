@@ -1,10 +1,10 @@
 sudo: required
 
-language: node_js
-node_js: ['10']
-
 services:
   - docker
+
+install: true
+test: true
 
 deploy:
   provider: script
