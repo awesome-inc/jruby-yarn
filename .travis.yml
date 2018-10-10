@@ -4,7 +4,8 @@ services:
   - docker
 
 install: true
-script: echo "skipping test"
+script:
+  - echo "skipping tests"
 
 deploy:
   provider: script
