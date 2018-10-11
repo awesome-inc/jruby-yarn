@@ -1,8 +1,6 @@
 #!/bin/sh
 IMAGE_NAME=awesomeinc/jruby-yarn:${DOCKER_TAG}
-# VCS_REF=${TRAVIS_COMMIT}
-VCS_REF=`git rev-parse --short HEAD`
-docker build --build-arg VCS_REF=\
+docker build --build-arg VCS_REF=`git rev-parse --short HEAD`\
  --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"`\
  --build-arg DOCKER_TAG="${DOCKER_TAG}"\
  -t ${IMAGE_NAME} .
