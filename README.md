@@ -6,7 +6,7 @@
 
 Build image for applications using JRuby and yarn/NodeJS, e.g. Rails with webpacker.
 
-[![dockeri.co](http://dockeri.co/image/awesomeinc/neo4j-decorator)](https://hub.docker.com/r/awesomeinc/jruby-yarn/)
+[![dockeri.co](http://dockeri.co/image/awesomeinc/jruby-yarn)](https://hub.docker.com/r/awesomeinc/jruby-yarn/)
 
 ## Versions
 
