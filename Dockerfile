@@ -22,4 +22,4 @@ LABEL author="Awesome Incremented <marcel.koertgen@gmail.com>"\
     org.label-schema.schema-version="1.0" \
     org.label-schema.docker.cmd="docker run awesomeinc/jruby-yarn:${DOCKER_TAG}"
 
-RUN apk add --no-cache nodejs yarn build-base tzdata
+RUN apk add --no-cache nodejs=8.9.3-r1 yarn=1.3.2-r0
