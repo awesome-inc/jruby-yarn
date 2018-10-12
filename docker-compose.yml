@@ -1,0 +1,14 @@
+version: '3.4'
+
+x-proxy: &proxy
+  http_proxy: ${http_proxy}
+  https_proxy: ${https_proxy}
+  no_proxy: ${no_proxy}
+
+services:
+  jruby-yarn:
+    image: awesomeinc/jruby-yarn:9.1.17-alpine
+    build:
+      context: ./
+      args:
+        <<: *proxy
