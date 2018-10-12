@@ -22,6 +22,4 @@ LABEL author="Awesome Incremented <marcel.koertgen@gmail.com>"\
     org.label-schema.schema-version="1.0" \
     org.label-schema.docker.cmd="docker run awesomeinc/jruby-yarn:${DOCKER_TAG}"
 
-RUN apk add --no-cache nodejs yarn &&\
-    yarn config set unsafe-perm true &&\
-    yarn global add node-sass
+RUN apk add --no-cache nodejs yarn
