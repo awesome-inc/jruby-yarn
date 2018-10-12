@@ -12,3 +12,5 @@ services:
       context: ./
       args:
         <<: *proxy
+    environment:
+      <<: *proxy

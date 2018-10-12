@@ -22,4 +22,9 @@ LABEL author="Awesome Incremented <marcel.koertgen@gmail.com>"\
     org.label-schema.schema-version="1.0" \
     org.label-schema.docker.cmd="docker run awesomeinc/jruby-yarn:${DOCKER_TAG}"
 
-RUN apk add --no-cache nodejs yarn
+RUN apk add --no-cache nodejs yarn curl
+
+ENV SASS_VERSION v4.9.3/linux-x64-57
+ENV SASS_BINARY_DIR /usr/share/node-sass/${SASS_VERSION}
+RUN mkdir -p ${SASS_BINARY_DIR} &&\
+    wget -o ${SASS_BINARY_DIR}/binding.node https://github.com/sass/node-sass/releases/download/${SASS_VERSION}/binding.node
