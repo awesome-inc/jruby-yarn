@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash -ex
 VCS_REF=`git rev-parse --short HEAD`
 BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"`
 docker-compose build
