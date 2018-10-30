@@ -24,8 +24,8 @@ LABEL author="Awesome Incremented <marcel.koertgen@gmail.com>"\
 
 RUN apk add --no-cache nodejs yarn curl
 
-
-ENV SASS_VERSION v4.9.3/linux_musl-x64-57
+ARG SASS_VERSION=v4.9.4
+ENV SASS_VERSION ${SASS_VERSION}/linux_musl-x64-57
 ENV SASS_BINARY_DIR /usr/share/node-sass/${SASS_VERSION}
 ENV SASS_BINARY_PATH ${SASS_BINARY_DIR}/binding.node
 RUN mkdir -p ${SASS_BINARY_DIR} &&\

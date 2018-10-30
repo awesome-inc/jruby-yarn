@@ -8,6 +8,8 @@ x-proxy: &proxy
 x-buildargs: &buildargs
   VCS_REF: ${VCS_REF:-unknown}
   BUILD_DATE: ${BUILD_DATE:-unknown}
+  # https://github.com/sass/node-sass/releases/
+  SASS_VERSION: v4.9.4
 
 services:
   jruby-yarn:

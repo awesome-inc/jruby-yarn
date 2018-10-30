@@ -8,6 +8,13 @@ RUN (curl -sL https://deb.nodesource.com/setup_8.x | bash -) &&\
   apt-get update && apt-get install -y --no-install-recommends nodejs yarn &&\
   rm -rf /var/lib/apt/lists/*
 
+ARG SASS_VERSION=v4.9.4
+ENV SASS_VERSION ${SASS_VERSION}/linux-x64-57
+ENV SASS_BINARY_DIR /usr/share/node-sass/${SASS_VERSION}
+ENV SASS_BINARY_PATH ${SASS_BINARY_DIR}/binding.node
+RUN mkdir -p ${SASS_BINARY_DIR} &&\
+  curl -o ${SASS_BINARY_PATH} -OJL https://github.com/sass/node-sass/releases/download/${SASS_VERSION}_binding.node
+
 # cf.: http://label-schema.org/rc1/
 LABEL author="Awesome Incremented <marcel.koertgen@gmail.com>"\
   org.label-schema.build-date="${BUILD_DATE}" \
