@@ -11,7 +11,7 @@ x-buildargs: &buildargs
 
 services:
   jruby-yarn:
-    image: awesomeinc/jruby-yarn:${TRAVIS_TAG}
+    image: awesomeinc/jruby-yarn:${TRAVIS_TAG:-latest}
     build:
       context: jre/
       args:
@@ -21,7 +21,7 @@ services:
     environment:
       <<: *proxy
   jruby-yarn-alpine:
-    image: awesomeinc/jruby-yarn:${TRAVIS_TAG}-alpine
+    image: awesomeinc/jruby-yarn:${TRAVIS_TAG:-latest}-alpine
     build:
       context: alpine/
       args:
