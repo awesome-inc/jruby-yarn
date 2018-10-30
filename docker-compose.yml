@@ -5,12 +5,28 @@ x-proxy: &proxy
   https_proxy: ${https_proxy}
   no_proxy: ${no_proxy}
 
+x-buildargs: &buildargs
+  VCS_REF: ${VCS_REF:-unknown}
+  BUILD_DATE: ${BUILD_DATE:-unknown}
+
 services:
   jruby-yarn:
-    image: awesomeinc/jruby-yarn:9.1.17-alpine
+    image: awesomeinc/jruby-yarn:${TRAVIS_TAG}
     build:
-      context: ./
+      context: jre/
       args:
         <<: *proxy
+        <<: *buildargs
+        DOCKER_TAG: ${TRAVIS_TAG}
+    environment:
+      <<: *proxy
+  jruby-yarn-alpine:
+    image: awesomeinc/jruby-yarn:${TRAVIS_TAG}-alpine
+    build:
+      context: alpine/
+      args:
+        <<: *proxy
+        <<: *buildargs
+        DOCKER_TAG: ${TRAVIS_TAG}-alpine
     environment:
       <<: *proxy
