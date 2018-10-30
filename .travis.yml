@@ -5,11 +5,4 @@ services:
 
 install: true
 script:
-  - echo "skipping tests"
-
-deploy:
-  provider: script
-  script: export DOCKER_TAG=$TRAVIS_TAG && ./deploy.sh
-  on:
-    branch: master
-    tags: true
+  - ./deploy.sh
