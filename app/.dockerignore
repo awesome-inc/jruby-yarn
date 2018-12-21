@@ -1,0 +1,22 @@
+log/
+tmp/
+*.log
+Dockerfile*
+.dockerignore
+README.md
+sonar-project.properties
+
+node_modules
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+/storage/*
+
+/vendor/bundle/*
+
+/public/assets
+/public/coverage
+/public/packs
+/public/packs-test

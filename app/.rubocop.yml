@@ -1,0 +1,24 @@
+# Default rubocop yml, cf.:
+# - https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+
+# https://github.com/toshimaru/rubocop-rails_config#usage
+inherit_gem:
+  rubocop-rails_config:
+    - config/rails.yml
+
+AllCops:
+  TargetRubyVersion: 2.3
+
+Metrics/BlockLength:
+  Exclude:
+    # describe blocks (tests/fixtures) may be longer than 25 lines ;-)
+    - '**/test/**/*'
+
+Metrics/ClassLength:
+  Exclude:
+    # describe blocks (tests/fixtures) may be longer than 25 lines ;-)
+    - '**/test/**/*'
+
+Style/Documentation:
+  Exclude:
+    - '**/test/**/*'

@@ -1,4 +1,5 @@
-FROM jruby:9.1.17-alpine
+ARG JRUBY_VERSION=9.1.17
+FROM jruby:${JRUBY_VERSION}-alpine
 
 # cf.:
 # - https://docs.docker.com/docker-cloud/builds/advanced/#environment-variables-for-building-and-testing

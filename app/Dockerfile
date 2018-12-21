@@ -6,13 +6,11 @@ ENV APP /usr/src/app
 RUN mkdir -p $APP
 WORKDIR $APP
 
-ADD package.json yarn.lock .yarnrc ./
-ADD npm-packages-offline-cache/ ./npm-packages-offline-cache/
-RUN yarn install --offline
+COPY package.json yarn.loc* .yarnr* ./
+RUN yarn
 
 COPY Gemfile* $APP/
-COPY vendor/cache $APP/vendor/cache/
-RUN bundle install --local
+RUN bundle install
 
 COPY . $APP
 
@@ -27,8 +25,10 @@ RUN rake assets:precompile RAILS_ENV=production
 #------
 FROM ${DOCKER_BASE}
 
+COPY Gemfile* $APP/
+RUN bundle install --without test development
+
 COPY . $APP
-RUN bundle install --local --without test development
 
 COPY --from=builder /usr/src/app/public/assets ./public/assets
 COPY --from=builder /usr/src/app/public/coverage ./public/coverage
@@ -62,7 +62,4 @@ ENV JRUBY_OPTS -J-Djava.security.egd=file:/dev/./urandom
 
 EXPOSE 3000
 
-CMD (rake db:setup 2> /dev/nul || true) &&\
-    rake db:migrate &&\
-    rm -f /tmp/pids/server.pid &&\
-    rails server
+CMD ["./start.sh"]

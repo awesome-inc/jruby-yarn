@@ -6,14 +6,16 @@ x-proxy: &proxy
   no_proxy: ${no_proxy}
 
 x-buildargs: &buildargs
-  VCS_REF: ${VCS_REF:-unknown}
-  BUILD_DATE: ${BUILD_DATE:-unknown}
+  VCS_REF: ${VCS_REF}
+  BUILD_DATE: ${BUILD_DATE}
+  # https://hub.docker.com/_/jruby?tab=tags
+  JRUBY_VERSION: ${JRUBY_VERSION}
   # https://github.com/sass/node-sass/releases/
-  SASS_VERSION: v4.9.4
+  SASS_VERSION: ${SASS_VERSION}
 
 services:
   jruby-yarn:
-    image: awesomeinc/jruby-yarn:${TRAVIS_TAG:-latest}
+    image: awesomeinc/jruby-yarn:${TRAVIS_TAG}
     build:
       context: jre/
       args:
@@ -23,7 +25,7 @@ services:
     environment:
       <<: *proxy
   jruby-yarn-alpine:
-    image: awesomeinc/jruby-yarn:${TRAVIS_TAG:-latest}-alpine
+    image: awesomeinc/jruby-yarn:${TRAVIS_TAG}-alpine
     build:
       context: alpine/
       args:
@@ -32,3 +34,11 @@ services:
         DOCKER_TAG: ${TRAVIS_TAG}-alpine
     environment:
       <<: *proxy
+  app:
+    build:
+      context: app/
+      args:
+        <<: *proxy
+        <<: *buildargs
+        BUILDER_BASE: awesomeinc/jruby-yarn:${JRUBY_VERSION}
+        DOCKER_BASE: awesomeinc/jruby-yarn:${JRUBY_VERSION}-alpine

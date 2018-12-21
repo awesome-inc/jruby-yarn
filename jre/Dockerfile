@@ -1,4 +1,5 @@
-FROM jruby:9.1.17
+ARG JRUBY_VERSION=9.1.17
+FROM jruby:${JRUBY_VERSION}
 
 # Install node 10.x, cf.: https://websiteforstudents.com/install-the-latest-node-js-and-nmp-packages-on-ubuntu-16-04-18-04-lts/
 # Install yarn 1.10, cf.: https://yarnpkg.com/lang/en/docs/install/#debian-stable

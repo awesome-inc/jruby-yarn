@@ -1,0 +1,44 @@
+{
+  "name": "comp1",
+  "private": true,
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "coverage": "jest --coverage"
+  },
+  "dependencies": {
+    "@rails/webpacker": "3.5",
+    "axios": "^0.18.0",
+    "babel-preset-react": "^6.24.1",
+    "prop-types": "^15.6.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  },
+  "devDependencies": {
+    "babel-jest": "^23.6.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "jest": "^23.6.0",
+    "jest-dom": "^2.1.1",
+    "jquery": "^1.12.4",
+    "react-testing-library": "^5.2.3",
+    "webpack-dev-server": "2.11.2"
+  },
+  "jest": {
+    "roots": [
+      "spec/javascript",
+      "app/assets/javascripts",
+      "app/javascript"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "app/assets/javascripts",
+      "vendor/assets/javascripts",
+      "app/javascript"
+    ],
+    "collectCoverageFrom": [
+      "app/**/*.{js,jsx}"
+    ],
+    "coverageDirectory": "public/coverage"
+  }
+}
