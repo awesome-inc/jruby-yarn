@@ -12,11 +12,13 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-*.log
 
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
+
+/node_modules
+/yarn-error.log
 
 /public/assets
 .byebug_history
@@ -25,11 +27,6 @@
 /config/master.key
 /public/packs
 /public/packs-test
-
-/node_modules/*
-yarn-error.log
-yarn-debug.log*
-.yarn-integrity
 
 # Ignore coverage
 coverage

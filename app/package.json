@@ -1,5 +1,5 @@
 {
-  "name": "comp1",
+  "name": "app",
   "private": true,
   "scripts": {
     "test": "jest",
