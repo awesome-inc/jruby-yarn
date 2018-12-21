@@ -3,7 +3,7 @@
 Scaffolded with
 
 ```console
-rails new app --skip-spring --webpack=react -d jdbcpostgresql --skip-bootsnap --skip-coffee --skip-listen
+rails new app -d jdbcsqlite3 --webpack=react --skip-spring --skip-bootsnap --skip-coffee --skip-listen
 ```
 
 This README would normally document whatever steps are necessary to get the

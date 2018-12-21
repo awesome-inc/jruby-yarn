@@ -1,0 +1,12 @@
+<h1>App</h1>
+
+<dl>
+  <dt>Commit</dt>
+  <dd><%= ENV.fetch('GIT_COMMIT') { 'unknown' } %></dd>
+</dl>
+
+<dl>
+  <dt>Code Coverage</dt>
+  <dd><%= link_to 'Ruby', '/coverage/rcov/index.html', target: '_blank' %>, <%= link_to 'JavaScript', '/coverage/lcov-report/index.html', target: '_blank' %></dd>
+</dl>
+

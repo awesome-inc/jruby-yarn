@@ -42,3 +42,4 @@ services:
         <<: *buildargs
         BUILDER_BASE: awesomeinc/jruby-yarn:${JRUBY_VERSION}
         DOCKER_BASE: awesomeinc/jruby-yarn:${JRUBY_VERSION}-alpine
+    ports: ['3000:3000']
