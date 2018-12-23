@@ -43,3 +43,4 @@ services:
         BUILDER_BASE: awesomeinc/jruby-yarn:${JRUBY_VERSION}
         DOCKER_BASE: awesomeinc/jruby-yarn:${JRUBY_VERSION}-alpine
     ports: ['3000:3000']
+    depends_on: ['jruby-yarn', 'jruby-yarn-alpine']

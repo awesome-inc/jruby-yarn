@@ -20,7 +20,7 @@ RUN yarn coverage
 
 ENV JRUBY_OPTS -J-Djava.security.egd=file:/dev/./urandom
 RUN rake test:coverage RAILS_ENV=test
-RUN rake assets:precompile RAILS_ENV=production
+RUN rake assets:precompile RAILS_ENV=production SECRET_KEY_BASE=unsecure
 
 #------
 FROM ${DOCKER_BASE}
