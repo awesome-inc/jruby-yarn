@@ -40,7 +40,7 @@ services:
       args:
         <<: *proxy
         <<: *buildargs
-        BUILDER_BASE: awesomeinc/jruby-yarn:${JRUBY_VERSION}
-        DOCKER_BASE: awesomeinc/jruby-yarn:${JRUBY_VERSION}-alpine
+        BUILDER_BASE: awesomeinc/jruby-yarn:${TRAVIS_TAG}
+        DOCKER_BASE: awesomeinc/jruby-yarn:${TRAVIS_TAG}-alpine
     ports: ['3000:3000']
     depends_on: ['jruby-yarn', 'jruby-yarn-alpine']
