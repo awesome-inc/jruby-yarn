@@ -15,23 +15,23 @@ x-buildargs: &buildargs
 
 services:
   jruby-yarn:
-    image: awesomeinc/jruby-yarn:${TRAVIS_TAG}
+    image: awesomeinc/jruby-yarn:${DOCKER_TAG}
     build:
       context: jre/
       args:
         <<: *proxy
         <<: *buildargs
-        DOCKER_TAG: ${TRAVIS_TAG}
+        DOCKER_TAG: ${DOCKER_TAG}
     environment:
       <<: *proxy
   jruby-yarn-alpine:
-    image: awesomeinc/jruby-yarn:${TRAVIS_TAG}-alpine
+    image: awesomeinc/jruby-yarn:${DOCKER_TAG}-alpine
     build:
       context: alpine/
       args:
         <<: *proxy
         <<: *buildargs
-        DOCKER_TAG: ${TRAVIS_TAG}-alpine
+        DOCKER_TAG: ${DOCKER_TAG}-alpine
     environment:
       <<: *proxy
   app:
@@ -40,7 +40,7 @@ services:
       args:
         <<: *proxy
         <<: *buildargs
-        BUILDER_BASE: awesomeinc/jruby-yarn:${TRAVIS_TAG}
-        DOCKER_BASE: awesomeinc/jruby-yarn:${TRAVIS_TAG}-alpine
+        BUILDER_BASE: awesomeinc/jruby-yarn:${DOCKER_TAG}
+        DOCKER_BASE: awesomeinc/jruby-yarn:${DOCKER_TAG}-alpine
     ports: ['3000:3000']
     depends_on: ['jruby-yarn', 'jruby-yarn-alpine']
