@@ -2,7 +2,7 @@ ARG BUILDER_BASE=awesomeinc/jruby-yarn:9.1.17
 ARG DOCKER_BASE=awesomeinc/jruby-yarn:9.1.17-alpine
 FROM ${BUILDER_BASE} as builder
 
-ARG APP /usr/src/app
+ARG APP=/usr/src/app
 RUN mkdir -p $APP
 WORKDIR $APP
 
