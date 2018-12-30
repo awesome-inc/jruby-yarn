@@ -2,7 +2,7 @@ ARG BUILDER_BASE=awesomeinc/jruby-yarn:9.1.17
 ARG DOCKER_BASE=awesomeinc/jruby-yarn:9.1.17-alpine
 FROM ${BUILDER_BASE} as builder
 
-ENV APP /usr/src/app
+ARG APP /usr/src/app
 RUN mkdir -p $APP
 WORKDIR $APP
 
@@ -25,14 +25,18 @@ RUN rake assets:precompile RAILS_ENV=production SECRET_KEY_BASE=unsecure
 #------
 FROM ${DOCKER_BASE}
 
+ARG APP=/usr/src/app
+RUN mkdir -p $APP
+WORKDIR $APP
+
 COPY Gemfile* $APP/
 RUN bundle install --without test development --deployment
 
 COPY . $APP
 
-COPY --from=builder /usr/src/app/public/assets ./public/assets
-COPY --from=builder /usr/src/app/public/coverage ./public/coverage
-COPY --from=builder /usr/src/app/public/packs ./public/packs
+COPY --from=builder ${APP}/public/assets ./public/assets
+COPY --from=builder ${APP}/public/coverage ./public/coverage
+COPY --from=builder ${APP}/public/packs ./public/packs
 
 # TODO
 ARG VCS_REF="unknown"
